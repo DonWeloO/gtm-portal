@@ -1,2 +1,2 @@
 # gtm-portal
-Aplicación web desarrollada en Python - Django 2.2
+Aplicación web para publicación de Talleres Mecánicos desarrollada en Python - Django 2.2

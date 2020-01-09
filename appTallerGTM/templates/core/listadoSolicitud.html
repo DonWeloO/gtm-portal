@@ -1,0 +1,52 @@
+{% extends  'core/baseClienteHome.html' %}
+
+{% block innerHeader %}
+{% endblock innerHeader %}
+{% block contenido %}
+
+<section id="contact" class="bg-silver-light">
+  <div class="container">
+    <div class="section-content">
+      <div class="row">
+        <div class="col-md-3">
+          <h2 class="font-36 text-uppercase line-height-1 mt-0">Listado Solicitud<span
+              class="text-theme-colored">es</span></h2>
+          <p>Tienes estas Solicitudes realizadas.</p>
+        </div>
+        <div class="col-md-8">
+          <!-- Contact Form -->
+          <section>
+              <div class="table-responsive-sm">
+                  <table class="table">
+                      <thead class="thead-light">
+                        <tr>
+                          <th scope="col">Fecha Solicitud</th>
+                          <th scope="col">Vehiculo</th>
+                          <th scope="col">Motivo</th>
+                          <th scope="col">Taller</th>
+                          <th scope="col">Estado de Solicitud</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for post in solicitud %}
+                        <tr>
+                          <td>{{ post.fechasol }}</td>
+                          <td>{{ post.patente }}</td>
+                          <td>{{ post.motivo }}</td>
+                          <td>{{ post.idtaller }}</td>
+                          <td>{{ post.idestadosol }}</td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>                    
+                </div>
+          </section>
+          <!-- Contact Form Validation-->
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock contenido %}
+

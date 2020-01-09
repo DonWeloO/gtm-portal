@@ -1,0 +1,209 @@
+{% extends  'core/base.html' %}
+
+{% block contenido %}
+{% load static %}
+<!-- Section: Búsqueda Talleres  -->
+<section id="buscar">
+  <div class="container">
+    <div class="section-content ">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2 text-center">
+          <form action="/home/buscar/" method="GET">
+            <div class="form-group">
+                <h2 class="title font-42 line-bottom-double-line-centered  text-theme-colored">Busca tu taller aquí...
+                  <input type="text" class="form-control" name="q" value="{{ query|escape }}" required placeholder="¿Qué necesitas? Motor, Ajuste, Caja Automatica...">
+                    <div class="col-md-8 col-md-offset-2 text-center">                                  
+                  </div>     
+                  <button type="submit" class="btn btn-primary btn-lg btn-block">Comenzar búsqueda</button>                         
+              </h2>             
+            </div>            
+          </form>            
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section: Búsqueda tipo Blog  -->
+<section id="resul_busqueda">
+    <div class="container pb-sm-30">
+      <div class="section-content">
+        <div class="row">
+          <div class="col-md-12">
+              {% if query %}
+            <h2 class="line-bottom mt-0 mb-20">Resultados para tu búsqueda de <span class="text-theme-colored">"{{ query|escape }}"</span></h2>
+              {% if results %}         
+            <div class="owl-carousel-3col">
+                {% for resu in results %}
+              <div class="item">
+                <article class="post clearfix mb-sm-30">
+                  <div class="entry-header">
+                    <div class="post-thumb thumb"> 
+                      <img src="{{ resu.foto.url }}" alt="" class="img-responsive img-fullwidth">
+                    </div>
+                  </div>
+                  <div class="entry-content p-20">
+                    <h4 class="entry-title text-white text-uppercase line-bottom pb-5"><a class="font-weight-600" href="#">{{resu.nombre}}</a></h4>
+                    <div class="entry-meta">
+                      <ul class="list-inline font-12 mb-10">
+                        <li><i class="fa fa fa-map-marker text-theme-colored mr-5"></i>{{resu.direccion}} / </li>
+                        <li><i class="fa fa-calendar text-theme-colored mr-5"></i> June 26, 2016 </li>
+                      </ul>
+                    </div>
+                    <p class="mt-5">Lorem ipsum dolor sit amet, consectetur adipisi cing elit.</p>
+                    <a class="btn btn-theme-colored btn-sm mt-5" href="blog-single-left-sidebar.html"> View Details</a>
+                  </div>
+                </article>
+              </div> 
+              {% endfor %}          
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>  
+  {% else %}
+  <p>No se encontraron resultados</p>
+{% endif %}
+{% endif %}  
+</section>
+
+   
+<!-- Section: Vista Talleres mejor calificados  -->
+<section class="bg-silver-light">
+  <div class="container pb-40">
+    <div class="section-title vertical-line">
+      <div class="row">
+        <div class="col-md-12">
+          <p class="text-uppercase mb-0">Los Talleres mejor calificados de</p>
+          <h2 class="text-uppercase text-theme-colored title">GTM <span class="text-black-333">Portal</span></h2>
+        </div>
+      </div>
+    </div>
+    <div class="row multi-row-clearfix">
+      <div class="col-md-12">
+        <div class="products owl-carousel-4col">
+          {% for post in taller %}
+          <div class="item">
+            <div class="product bg-white">
+              <span class="tag-sale">Destacado</span>
+              <div class="product-thumb">
+                <img alt="" src="{{ post.foto.url }}" class="img-responsive img-fullwidth">
+                <div class="overlay">
+                  <div class="btn-add-to-cart-wrapper">
+                    <a class="btn btn-theme-colored btn-sm btn-flat pl-20 pr-20 btn-add-to-cart text-uppercase font-weight-700"
+                      href="#" target="_blank">Pedir diagnostico</a>
+                  </div>
+                  <div class="btn-product-view-details">
+                    <a class="btn btn-default btn-theme-colored btn-sm btn-flat pl-20 pr-20 btn-add-to-cart text-uppercase font-weight-700"
+                      href="#" target="_blank">Ver más</a>
+                  </div>
+                </div>
+              </div>
+              <div class="product-details text-center">
+                <a href="#">
+                  <h5 class="product-title">{{ post.nombre }}</h5>
+                </a>
+                <div class="star-rating" title="Rated 4.50 out of 5"><span data-width="90%">3.50</span></div>
+                <!--<div class="price"><del><span class="amount">$220.00</span></del><ins><span class="amount">$210.00</span></ins></div>-->
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section:  Cualidades talleres Portal  -->
+<section>
+  <div class="container">
+    <div class="section-content">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="icon-box text-center">
+            <a href="#" class="icon icon-gray icon-bordered bg-hover-theme-colored icon-circled icon-xl">
+              <i class="flaticon-worker text-theme-colored font-48"></i>
+            </a>
+            <h4 class="icon-box-title text-uppercase"><a class="" href="#">Talleres Expertos</a></h4>
+            <p class="">GTM Portal agrupa solo a talleres constiutidos como tal que entregan servicios de calidad y
+              confianza.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="icon-box text-center">
+            <a href="#" class="icon icon-gray icon-bordered bg-hover-theme-colored icon-circled icon-xl">
+              <i class="flaticon-tools-2 text-theme-colored font-48"></i>
+            </a>
+            <h4 class="icon-box-title text-uppercase"><a class="" href="#">Herramientas de gestión</a></h4>
+            <p class="">Los talleres registrados cuentan con acceso a GTM Empresas, moderna aplicación para la gestión
+              de talleres.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="icon-box text-center">
+            <a href="#" class="icon icon-gray icon-bordered bg-hover-theme-colored icon-circled icon-xl">
+              <i class="flaticon-wallet2 text-theme-colored font-48"></i>
+            </a>
+            <h4 class="icon-box-title text-uppercase"><a class="" href="#">No Gastes demás</a></h4>
+            <p class="">Lo barato sale caro dice el dicho, te aseguramos que no tendrás que gastar demás, gasta una sola
+              vez y repara tu vehiculo con talleres de confianza.</p>
+          </div>
+        </div>
+        <!--
+          <div class="col-md-3">
+            <div class="icon-box text-center">
+              <a href="#" class="icon icon-gray icon-bordered bg-hover-theme-colored icon-circled icon-xl">
+                <i class="flaticon-paintbrush text-theme-colored font-48"></i>
+              </a>
+              <h4 class="icon-box-title text-uppercase"><a class="" href="#">Creative Thinking</a></h4>
+              <p class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias non nulla placeat, odio, qui dicta alias.</p>
+            </div>
+          </div>-->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Divider: Resumen atenciones -->
+<section class="divider parallax layer-overlay overlay-dark-8" data-bg-img="{% static 'appTallerGTM/images/bg6.jpg' %}"
+  data-parallax-ratio="0.7">
+  <div class="container pt-30 pb-0">
+    <div class="row">
+      <div class="col-md-4">
+        <img class="img-fullwidth hidden-xs hidden-sm" src="{% static 'appTallerGTM/images/4.png' %}" alt="">
+      </div>
+      <div class="col-md-8 pt-100">
+        <div class="col-xs-12 col-sm-6 col-md-4 mb-md-50">
+          <div class="funfact text-center">
+            <i class="flaticon-worker text-white font-weight-800 font-32 mt-5"></i>
+            <h2 class="animate-number text-theme-colored font-36 font-weight-500 font-trirong mt-10 mb-0"
+              data-value="987" data-animation-duration="2000">0</h2>
+            <h5 class="text-uppercase font-14 text-white">Vehiculos atendidos</h5>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 mb-md-50">
+          <div class="funfact text-center">
+            <i class="flaticon-layers text-white font-weight-800 font-32 mt-5"></i>
+            <h2 class="animate-number text-theme-colored font-36 font-weight-500 font-trirong mt-10 mb-0"
+              data-value="1452" data-animation-duration="2000">0</h2>
+            <h5 class="text-uppercase font-14 text-white">Clientes felices</h5>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 mb-md-50">
+          <div class="funfact text-center">
+            <i class="flaticon-trophy2 text-white font-weight-800 font-32 mt-5"></i>
+            <h2 class="animate-number text-theme-colored font-36 font-weight-500 font-trirong mt-10 mb-0"
+              data-value="456" data-animation-duration="2000">0</h2>
+            <h5 class="text-uppercase font-14 text-white">Calificaciones a talleres</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+<!-- end main-content -->
+
+
+{% endblock contenido %}

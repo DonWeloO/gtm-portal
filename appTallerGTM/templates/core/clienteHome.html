@@ -1,0 +1,47 @@
+{% extends  'core/baseClienteHome.html' %}
+
+{% block innerHeader %}
+{% endblock innerHeader %}
+{% block contenido %}
+<section class="bg-silver-light">
+    <div class="container">
+      <div class="section-title vertical-line">
+        <div class="row">
+          <div class="col-md-12">
+              <p class="text-uppercase mb-0">Menú principal </p>
+              <h2 class="text-uppercase text-theme-colored title">Gestión <span class="text-black-333">Clientes</span></h2>
+              <div class="section-content">
+                  <div class="row">
+                          <div class="col-xs-12 col-sm-6 col-md-4">
+                              <div class="icon-box bg-white left media border-3px bg-hover-theme-colored mb-30 p-30 pb-20"> <a class="media-left pull-left flip" href="{%url 'listadovehiculo' %}"><i class="flaticon-carfixing-car-washing-machine text-theme-colored"></i></a>
+                                <div class="media-body">
+                                  <h5 class="media-heading heading">Mis Vehiculos registrados</h5>
+                                  <p>Gestiona todo lo relacionado con tus vehiculos desde aquí</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-4">
+                              <div class="icon-box bg-white left media border-3px bg-hover-theme-colored mb-30 p-30 pb-20"> <a class="media-left pull-left flip" href="{% url 'diagnostico' %}"><i class="flaticon-carfixing-pistons-cross text-theme-colored"></i></a>
+                                <div class="media-body">
+                                  <h5 class="media-heading heading">Reserva de hora</h5>
+                                  <p>Generar una reserva para la revisión de un Vehículo.</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-4">
+                              <div class="icon-box bg-white left media border-3px bg-hover-theme-colored mb-30 p-30 pb-20"> <a class="media-left pull-left flip" href="{%url 'home' %}#buscartaller"><i class="flaticon-carfixing-transport-6 text-theme-colored"></i></a>
+                                <div class="media-body">
+                                  <h5 class="media-heading heading">Buscar Talleres</h5>
+                                  <p>Busca un taller mecánico desde aquí.</p>
+                                </div>
+                              </div>
+                            </div>                          
+                  </div>
+                </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+{% endblock contenido %}

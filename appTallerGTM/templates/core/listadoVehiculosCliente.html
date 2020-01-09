@@ -1,0 +1,135 @@
+{% extends  'core/baseClienteHome.html' %}
+
+{% block innerHeader %}
+{% endblock innerHeader %}
+{% block contenido %}
+
+<section id="contact" class="bg-silver-light">
+  <div class="container">
+    <div class="section-content">
+      <div class="row">
+        <div class="col-md-3">
+          <h2 class="font-36 text-uppercase line-height-1 mt-0">Listado Vehicul<span
+              class="text-theme-colored">os</span></h2>
+          <p>Tienes estos vehiculos registrados.</p>
+        </div>
+        <div class="col-md-8">
+          <!-- Contact Form -->
+          <section>
+              <div class="table-responsive-sm">
+                  <table class="table">
+                      <thead class="thead-light">
+                        <tr>
+                          <th scope="col">Patente</th>
+                          <th scope="col">Marca</th>
+                          <th scope="col">Modelo</th>
+                          <th scope="col">Color</th>
+                          <th scope="col">Editar</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for post in auto %}
+                        <tr>
+                          <td>{{ post.patente }}</td>
+                          <td>{{ post.idmarca }}</td>
+                          <td>{{ post.idmodelo }}</td>
+                          <td>{{ post.idcolor }}</td>
+                          <td><a href="{% url 'editarvecli' post.patente %}" class="btn btn-primary active"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>                    
+                </div>
+          </section>
+          <!-- Contact Form Validation-->
+        </div>
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel">Editar Datos del Vehículo {{ auto.patente}}</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span> 
+                </button>
+              </div>
+              <div class="modal-body">
+              <!-- DATOS DEL FORMULARIO -->
+              <form id="contact_form" name="contact_form" class="register-form"  method="post"  action="">
+              {% csrf_token %}
+              <div class="row">
+                <div class="col-sm-3">
+                  <div class="form-group mb-20">
+                    <label for="form_name">Patente</label>
+                    <input name="patente" class="form-control" type="text" placeholder="AAAA11" maxlength="6" required="" value="{{ post.patente }}" disabled>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group mb-30">
+                        <div class="styled-select">
+                          <label for="form_name">Seleccione una Marca</label>
+                          <select id="car_select" name="idmarca" class="form-control" required="">
+                            <option value="">- Marca del Vehiculo -</option>
+                               {% for mar in marca %}                                
+                                <option value="{{mar.idmarca}}">{{mar.nommarca}}</option>
+                               {% endfor %}
+                            </select>
+                        </div>
+                      </div>
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-5">
+                  <div class="form-group mb-30">
+                    <div class="styled-select">
+                      <label for="form_name">Seleccione un Modelo <small>*</small></label>
+                      <select id="car_select" name="idmodelo" class="form-control" required="">
+                        <option value="">- Modelo del Vehiculo -</option>
+                               {% for mod in modelo %}                                
+                                <option value="{{mod.idmodelo}}">{{mod.nommodelo}}</option>
+                               {% endfor %}
+                            </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-5">
+                    <div class="form-group mb-30">
+                        <div class="styled-select">
+                          <label for="form_name">Seleccione un Color <small>*</small></label>
+                          <select id="car_select" name="idcolor" class="form-control" required="">
+                            <option value="">- Color del Vehiculo -</option>
+                               {% for post in color %}                                
+                                <option value="{{post.idcolor}}">{{post.nomcolor}}</option>
+                               {% endfor %}
+                            </select>
+                        </div>
+                      </div>
+          
+                </div>
+              </div>
+                  <div class="form-group">
+                <input name="form_botcheck" class="form-control" type="hidden" value=""/>
+                <button type="button" class="btn btn-flat btn-theme-colored text-uppercase mt-0 mb-sm-30">Agregar Vehiculos</button>
+                <button type="reset" class="btn btn-flat btn-theme-colored text-uppercase mt-0 mb-sm-30">Borrar campos</button>
+              </div>
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="" class="btn btn-primary">Save changes</button>
+              </div>
+            </form>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock contenido %}
+

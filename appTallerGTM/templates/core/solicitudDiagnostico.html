@@ -1,0 +1,74 @@
+{% extends  'core/baseClienteHome.html' %}
+
+{% block innerHeader %}
+{% endblock innerHeader %}
+{% block contenido %}
+
+<section id="contact" class="bg-silver-light">
+  <div class="container">
+    <div class="section-content">
+      <div class="row">
+        <div class="col-md-3">
+          <h2 class="font-36 text-uppercase line-height-1 mt-0">Reservar Ho<span
+              class="text-theme-colored">ra</span></h2>
+          <p>Reserve una Visita Seleccionando fecha y hora en un Taller Mécanico.</p>
+        </div>
+        <div class="col-md-8">
+          <!-- Contact Form -->
+          <form id="contact_form" name="contact_form" class="register-form" action="{% url 'exitoreserva' %}">
+            {% csrf_token %}
+            <div class="row">
+              <div class="col-sm-8">
+                <div class="form-group mb-30">
+                  <div class="styled-select">
+                    <label for="form_name">Seleccione un Taller Mecánico <small>*</small></label>
+                    <select id="car_select" name="idtaller" class="form-control" required="">
+                      <option value="">- Taller -</option>
+                      {% for ta in taller %}                                
+                        <option value="{{ta.idtaller}}">{{ta.nombre}}</option>
+                      {% endfor %}
+                      </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group mb-30">
+                  <div class="styled-select">
+                    <label for="form_name">Seleccione una Fecha<small>*</small></label>
+                    <input name="fechanac" class="form-control required date-picker" data-date-format="yyyy-mm-dd" type="text" placeholder="Fecha Reserva" aria-required="true">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-8">
+                <div class="form-group mb-30">
+                <label for="form_name">Seleccione Hora<small>*</small></label>
+                <select id="car_select" name="hora" class="form-control" required="">
+                  <option value="">- Horas -</option>                             
+                    <option value="1">10:01 - 10:30</option>
+                    <option value="2">10:31 - 11:00</option>
+                    <option value="2">16:31 - 17:00</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <input name="form_botcheck" class="form-control" type="hidden" value="" />
+                <button type="submit" class="btn btn-flat btn-theme-colored text-uppercase mt-0 mb-sm-30">Generar Reserva</button>
+                <button type="reset" class="btn btn-flat btn-theme-colored text-uppercase mt-0 mb-sm-30">Borrar
+                  campos</button>
+              </div>
+            </div>          
+          </form>
+          <!-- Contact Form Validation-->
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock contenido %}

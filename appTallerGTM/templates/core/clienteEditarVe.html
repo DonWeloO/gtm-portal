@@ -1,0 +1,92 @@
+{% extends  'core/baseClienteHome.html' %}
+
+{% block innerHeader %}
+{% endblock innerHeader %}
+{% block contenido %}
+
+<section id="contact" class="bg-silver-light">
+    <div class="container">
+      <div class="section-content">
+        <div class="row">
+          <div class="col-md-3">
+            <h2 class="font-36 text-uppercase line-height-1 mt-0">Editar tus Vehicul<span class="text-theme-colored">os</span></h2>
+            <p>Aquí podras editar tus vehiculos para poder solicitar un servicio a uno de los talleres registrados en nuestra web.</p>
+          </div>
+          <div class="col-md-6">          
+            <!-- Contact Form -->
+            <form id="contact_form" name="contact_form" class="register-form"  method="post"  action="">
+              {% csrf_token %}
+              <div class="row">
+                <div class="col-sm-3">
+                  <div class="form-group mb-20">
+                    <label for="form_name">Patente</label>
+                    <input name="patente" class="form-control" type="text" maxlength="6" required="" value="{{ auto.patente }}" disabled>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group mb-30">
+                        <div class="styled-select">
+                          <label for="form_name">Seleccione una Marca <small>*</small></label>
+                          <select id="marca" name="idmarca" class="form-control" required="">
+                            <option value="">- Marca del Vehiculo -</option>
+                               {% for mar in marca %}                                
+                                <option value="{{mar.idmarca}}">{{mar.nommarca}}</option>
+                               {% endfor %}
+                            </select>
+                        </div>
+                      </div>
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-5">
+                  <div class="form-group mb-30">
+                    <div class="styled-select">
+                      <label for="form_name">Seleccione un Modelo <small>*</small></label>
+                      <select id="modelo" name="idmodelo" class="form-control" required="">
+                        <option value="">- Modelo del Vehiculo -</option>
+                               {% for mod in modelo %}                                
+                                <option value="{{mod.idmodelo}}" data-chained="{{mod.get_idmarca}}">{{mod.nommodelo}}</option>
+                               {% endfor %}
+                            </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-5">
+                    <div class="form-group mb-30">
+                        <div class="styled-select">
+                          <label for="form_name">Seleccione un Color <small>*</small></label>
+                          <select id="car_select" name="idcolor" class="form-control" required="">
+                            <option value="">- Color del Vehiculo -</option>
+                               {% for post in color %}                                
+                                <option value="{{post.idcolor}}" {% if auto.get_idcolor == post.idcolor %} selected {% endif %}>{{post.nomcolor}}</option>
+                               {% endfor %}
+                            </select>
+                        </div>
+                      </div>
+          
+                </div>
+              </div>
+                  <div class="form-group">
+                <input name="form_botcheck" class="form-control" type="hidden" value=""/>
+                <button type="submit" class="btn btn-flat btn-theme-colored text-uppercase mt-0 mb-sm-30">Guardar Cambios</button>
+                <button type="reset" class="btn btn-flat btn-theme-colored text-uppercase mt-0 mb-sm-30">Borrar campos</button>
+              </div>
+            </form>
+            <!-- Contact Form Validation-->
+            
+          </div>
+          <div class="col-md-3">
+            <p></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<script>
+  $("#modelo").chained("#marca");
+</script>
+
+
+{% endblock contenido %}

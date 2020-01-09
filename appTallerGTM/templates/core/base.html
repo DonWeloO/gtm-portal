@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="es">
+<head>
+
+<!-- Meta Tags -->
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+<meta name="description" content="Autocarepress - Car Repair & Servicing HTML Template" />
+<meta name="keywords" content="talleres mecanicos,automoviles,mecanica,reparacion,transporte,workshop" />
+<meta name="LARSoftware" content="Portal GTM" />
+
+<!-- Page Title -->
+<title>Portal GTM, Busca y encuentra tu taller</title>
+
+{% load static %}
+
+<!-- Favicon and Touch Icons -->
+<link href="{% static 'appTallerGTM/images/favicon.png' %}" rel="shortcut icon" type="image/png">
+<link href="{% static 'appTallerGTM/images/apple-touch-icon.png' %}" rel="apple-touch-icon">
+<link href="{% static 'appTallerGTM/images/apple-touch-icon-72x72.png' %}" rel="apple-touch-icon" sizes="72x72">
+<link href="{% static 'appTallerGTM/images/apple-touch-icon-114x114.png' %}" rel="apple-touch-icon" sizes="114x114">
+<link href="{% static 'appTallerGTM/images/apple-touch-icon-144x144.png' %}" rel="apple-touch-icon" sizes="144x144">
+
+
+<!-- Stylesheet -->
+<link href="{% static 'appTallerGTM/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'appTallerGTM/css/jquery-ui.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'appTallerGTM/css/animate.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'appTallerGTM/css/css-plugin-collections.css' %}" rel="stylesheet"/>
+<!-- CSS | menuzord megamenu skins -->
+<link id="menuzord-menu-skins" href="{% static 'appTallerGTM/css/menuzord-skins/menuzord-rounded-boxed.css' %}" rel="stylesheet"/>
+<!-- CSS | Main style file -->
+<link href="{% static 'appTallerGTM/css/style-main.css' %}" rel="stylesheet" type="text/css">
+<!-- CSS | Preloader Styles -->
+<link href="{% static 'appTallerGTM/css/preloader.css' %}" rel="stylesheet" type="text/css">
+<!-- CSS | Custom Margin Padding Collection -->
+<link href="{% static 'appTallerGTM/css/custom-bootstrap-margin-padding.css' %}" rel="stylesheet" type="text/css">
+<!-- CSS | Responsive media queries -->
+<link href="{% static 'appTallerGTM/css/responsive.css' %}" rel="stylesheet" type="text/css">
+<!-- CSS | Style css. This is the file where you can place your own custom css code. Just uncomment it and use it. -->
+<!-- <link href="css/style.css" rel="stylesheet" type="text/css"> -->
+
+<!-- CSS | Theme Color -->
+<link href="{% static 'appTallerGTM/css/colors/theme-skin-sky-blue-light.css' %}" rel="stylesheet" type="text/css">
+
+<!-- external javascripts -->
+<script src="{% static 'appTallerGTM/js/jquery-2.2.4.min.js' %}"></script>
+<script src="{% static 'appTallerGTM/js/jquery-ui.min.js' %}"></script>
+<script src="{% static 'appTallerGTM/js/bootstrap.min.js' %}"></script>
+<!-- JS | jquery plugin collection for this theme -->
+<script src="{% static 'appTallerGTM/js/jquery-plugin-collection.js' %}"></script>
+
+<!-- javascripts RUTCHILE-->
+<script src="{% static 'appTallerGTM/js/jquery.rut.chileno.js' %}"></script>
+
+<!-- SELECT DEPENDIENTE -->
+<!-- <script src="{% static 'appTallerGTM/js/jquery.js' %}"></script> -->
+<script src="{% static 'appTallerGTM/js/jquery.chained.js' %}"></script>
+
+<!-- Revolution Slider 5.x CSS settings -->
+<link  href="{% static 'appTallerGTM/js/revolution-slider/css/settings.css' %}" rel="stylesheet" type="text/css"/>
+<link  href="{% static 'appTallerGTM/js/revolution-slider/css/layers.css' %}" rel="stylesheet" type="text/css"/>
+<link  href="{% static 'appTallerGTM/js/revolution-slider/css/navigation.css' %}" rel="stylesheet" type="text/css"/>
+
+<!-- Revolution Slider 5.x SCRIPTS -->
+<script src="{% static 'appTallerGTM/js/revolution-slider/js/jquery.themepunch.tools.min.js' %}"></script>
+<script src="{% static 'appTallerGTM/js/revolution-slider/js/jquery.themepunch.revolution.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'appTallerGTM/js/revolution-slider/js/extensions/revolution.extension.video.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'appTallerGTM/js/revolution-slider/js/extensions/revolution.extension.slideanims.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'appTallerGTM/js/revolution-slider/js/extensions/revolution.extension.layeranimation.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'appTallerGTM/s/revolution-slider/js/extensions/revolution.extension.navigation.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'appTallerGTM/js/revolution-slider/js/extensions/revolution.extension.parallax.min.js' %}"></script>
+
+
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+<body class="">
+<div id="wrapper" class="clearfix">
+  <!-- preloader -->
+  <div id="preloader">
+    <div id="spinner">
+      <img class="ml-5" src="{% static 'appTallerGTM/images/preloaders/3.gif' %}" alt="">
+    </div>
+    <div id="disable-preloader" class="btn btn-default btn-sm">Disable Preloader</div>
+  </div>
+  
+  <!-- Header -->
+  <header id="header" class="header">
+    <div class="header-top bg-black-333 sm-text-center border-top-theme-color-3px p-0">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="widget no-border m-0">
+              <ul class="list-inline xs-text-center text-white mt-5">
+                <li class="m-0 pl-10 pr-10"> <a href="#" class="text-white"><i class="fa fa-phone text-theme-colored"></i> 02 2 8581102</a> </li>
+                <li class="m-0 pl-10 pr-10"> 
+                  <a href="#" class="text-white"><i class="fa fa-envelope-o text-theme-colored"></i> contacto@lajsoftware.cl</a> 
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-4 pr-0">
+            <div class="widget no-border m-0">
+              <ul class="styled-icons icon-dark icon-flat icon-sm pull-right flip sm-pull-none sm-text-center mt-sm-15">
+                <li><a href="#"><i class="fa fa-facebook text-white"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter text-white"></i></a></li>               
+                <li><a href="#"><i class="fa fa-instagram text-white"></i></a></li>
+                <li><a href="#"><i class="fa fa-linkedin text-white"></i></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <a class="btn btn-colored btn-flat btn-theme-colored pb-10" href="http://127.0.0.1:7777/" target="_blank">GTM Empresas</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="header-nav">
+      <div class="header-nav-wrapper navbar-scrolltofixed bg-white">
+        <div class="container">
+          <nav id="menuzord-right" class="menuzord default">
+            <a class="menuzord-brand pull-left flip xs-pull-center mt-20" href="{% url 'home' %}">
+              <img src="{% static 'appTallerGTM/images/GTM.png' %}" alt="">
+            </a>
+         <ul class="menuzord-menu">
+              <li class="active"><a href="{% url 'home' %}">Inicio</a></li>
+              <li><a href="#">Registra tu taller</a>
+                
+              </li>
+              <li><a href="#">Talleres</a></li>
+              <li><a href="#">Blog</a>                
+              </li>
+              {% if user.is_authenticated %}
+              <li><a href="{% url 'clienteHome' %}">Panel del Cliente</a>       
+                {% else %}
+              <li><a href="#">Clientes</a>
+                  <ul class="dropdown">
+                    <li><a href="{% url 'login' %}"><i class="fa fa-user fa-fw">&nbsp</i>Ingresar</a></li>
+                    <li><a href="{% url 'agregar-cliente' %}"><i class="fa fa-user-plus">&nbsp</i>Registrate</a></li>
+                  </ul>                             
+              </li>
+              {% endif %}  
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <section>
+<!-- Start main-content -->
+<div class="main-content">
+  <!-- Section: home -->
+  <section id="home">
+      
+  {% block slider %}
+<!-- Revolution Slider -->
+    <div class="container-fluid p-0">
+      
+      <!-- Slider Revolution Start -->
+      <div class="rev_slider_wrapper">
+        <div class="rev_slider rev_slider_default" data-version="5.0">
+          <ul>
+
+            <!-- SLIDE 1 -->
+            <li data-index="rs-1" data-transition="fade" data-slotamount="default" data-easein="default" data-easeout="default" data-masterspeed="default" data-thumb="http://placehold.it/1920x700" data-rotate="0"  data-fstransition="fade" data-saveperformance="off" data-title="Web Show" data-description="">
+              <!-- MAIN IMAGE -->
+              <img src="{% static 'appTallerGTM/images/bg1.jpg' %}"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-bgparallax="6" data-no-retina>
+              <!-- LAYERS -->
+
+              <!-- LAYER NR. 1 -->
+              <div class="tp-caption tp-resizeme text-white text-uppercase font-raleway bg-theme-colored pl-20 pr-20" 
+                id="rs-1-layer-1"
+
+                data-x="['left']"
+                data-hoffset="['30']"
+                data-y="['middle']"
+                data-voffset="['-125']"
+                data-fontsize="['24']"
+                data-lineheight="['48']"
+                data-width="none"
+                data-height="none"
+                data-whitespace="nowrap"
+                data-transform_idle="o:1;s:500"
+                data-transform_in="y:100;scaleX:1;scaleY:1;opacity:0;"
+                data-transform_out="x:left(R);s:1000;e:Power3.easeIn;s:1000;e:Power3.easeIn;"
+                data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
+                data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
+                data-start="1000" 
+                data-splitin="none" 
+                data-splitout="none" 
+                data-responsive_offset="on" 
+                style="z-index: 5; white-space: nowrap; font-weight:700; border-left: 8px solid #fff;">Encuentra los mejores talleres de la zona
+              </div>
+
+              <!-- LAYER NR. 2 -->
+              <div class="tp-caption tp-resizeme text-uppercase text-white font-raleway font-weight-700 m-0" 
+                id="rs-1-layer-2"
+
+                data-x="['left']"
+                data-hoffset="['30']"
+                data-y="['middle']"
+                data-voffset="['-50']"
+                data-fontsize="['72']"
+                data-lineheight="['82']"
+                data-width="none"
+                data-height="none"
+                data-whitespace="nowrap"
+                data-transform_idle="o:1;s:500"
+                data-transform_in="y:100;scaleX:1;scaleY:1;opacity:0;"
+                data-transform_out="x:left(R);s:1000;e:Power3.easeIn;s:1000;e:Power3.easeIn;"
+                data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
+                data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
+                data-start="1000" 
+                data-splitin="none" 
+                data-splitout="none" 
+                data-responsive_offset="on" 
+                style="z-index: 5; white-space: nowrap; font-weight:700;">GTM <span class="text-theme-colored"> Portal</span>
+              </div>  
+
+              <!-- LAYER NR. 3 -->
+              <div class="tp-caption tp-resizeme text-white" 
+                id="rs-1-layer-3"
+
+                data-x="['left']"
+                data-hoffset="['30']"
+                data-y="['middle']"
+                data-voffset="['20']"
+                data-fontsize="['16','18',24']"
+                data-lineheight="['28']"
+                data-width="none"
+                data-height="none"
+                data-whitespace="nowrap"
+                data-transform_idle="o:1;s:500"
+                data-transform_in="y:100;scaleX:1;scaleY:1;opacity:0;"
+                data-transform_out="x:left(R);s:1000;e:Power3.easeIn;s:1000;e:Power3.easeIn;"
+                data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
+                data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
+                data-start="1400" 
+                data-splitin="none" 
+                data-splitout="none" 
+                data-responsive_offset="on"
+                style="z-index: 5; white-space: nowrap; font-weight:400;">Te ayudamos a encontrar un taller de confianza <br>No te dejes engañar mas, encuentra, califica y solicita un diagnostico.
+              </div>
+
+              <!-- LAYER NR. 4 -->
+              <div class="tp-caption tp-resizeme" 
+                id="rs-1-layer-4"
+
+                data-x="['left']"
+                data-hoffset="['30']"
+                data-y="['middle']"
+                data-voffset="['90']"
+
+                data-width="none"
+                data-height="none"
+                data-whitespace="nowrap"
+                data-transform_idle="o:1;s:500"
+                data-transform_in="y:100;scaleX:1;scaleY:1;opacity:0;"
+                data-transform_out="x:left(R);s:1000;e:Power3.easeIn;s:1000;e:Power3.easeIn;"
+                data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
+                data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
+                data-start="1600" 
+                data-splitin="none" 
+                data-splitout="none" 
+                data-responsive_offset="on"
+                style="z-index: 5; white-space: nowrap; letter-spacing:1px;"><a class="btn btn-theme-colored btn-lg btn-flat text-white font-weight-600 pl-30 pr-30" href="#buscar">Buscar taller</a>
+              </div>
+            </li>
+
+            <!-- SLIDE 2 -->
+            <li data-index="rs-2" data-transition="fade" data-slotamount="default" data-easein="default" data-easeout="default" data-masterspeed="default" data-thumb="http://placehold.it/1920x700" data-rotate="0"  data-fstransition="fade" data-saveperformance="off" data-title="Web Show" data-description="">
+              <!-- MAIN IMAGE -->
+              <img src="{% static 'appTallerGTM/images/bg2.jpg' %}"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-bgparallax="6" data-no-retina>
+              <!-- LAYERS -->
+
+              <!-- LAYER NR. 1 -->
+              <div class="tp-caption tp-resizeme text-white text-uppercase font-raleway bg-theme-colored pl-20 pr-20" 
+                id="rs-2-layer-1"
+
+                data-x="['right']"
+                data-hoffset="['30']"
+                data-y="['middle']"
+                data-voffset="['-125']"
+                data-fontsize="['24']"
+                data-lineheight="['48']"
+                data-width="none"
+                data-height="none"
+                data-whitespace="nowrap"
+                data-transform_idle="o:1;s:500"
+                data-transform_in="y:100;scaleX:1;scaleY:1;opacity:0;"
+                data-transform_out="x:left(R);s:1000;e:Power3.easeIn;s:1000;e:Power3.easeIn;"
+                data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
+                data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
+                data-start="1000" 
+                data-splitin="none" 
+                data-splitout="none" 
+                data-responsive_offset="on" 
+                style="z-index: 5; white-space: nowrap; font-weight:700; border-right: 8px solid #fff;">Una aplicación web de gestión de talleres que lo tiene todo
+              </div>
+
+              <!-- LAYER NR. 2 -->
+              <div class="tp-caption tp-resizeme text-uppercase text-white font-raleway font-weight-700 m-0" 
+                id="rs-2-layer-2"
+
+                data-x="['right']"
+                data-hoffset="['30']"
+                data-y="['middle']"
+                data-voffset="['-50']"
+                data-fontsize="['72']"
+                data-lineheight="['82']"
+                data-width="none"
+                data-height="none"
+                data-whitespace="nowrap"
+                data-transform_idle="o:1;s:500"
+                data-transform_in="y:100;scaleX:1;scaleY:1;opacity:0;"
+                data-transform_out="x:left(R);s:1000;e:Power3.easeIn;s:1000;e:Power3.easeIn;"
+                data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
+                data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
+                data-start="1000" 
+                data-splitin="none" 
+                data-splitout="none" 
+                data-responsive_offset="on" 
+                style="z-index: 5; white-space: nowrap; font-weight:700;">GTM <span class="text-theme-colored"> Empresa</span>
+              </div>
+
+              <!-- LAYER NR. 3 -->
+              <div class="tp-caption tp-resizeme text-white text-right" 
+                id="rs-2-layer-3"
+
+                data-x="['right']"
+                data-hoffset="['30']"
+                data-y="['middle']"
+                data-voffset="['20']"
+                data-fontsize="['16','18',24']"
+                data-lineheight="['28']"
+                data-width="none"
+                data-height="none"
+                data-whitespace="nowrap"
+                data-transform_idle="o:1;s:500"
+                data-transform_in="y:100;scaleX:1;scaleY:1;opacity:0;"
+                data-transform_out="x:left(R);s:1000;e:Power3.easeIn;s:1000;e:Power3.easeIn;"
+                data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
+                data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
+                data-start="1400" 
+                data-splitin="none" 
+                data-splitout="none" 
+                data-responsive_offset="on"
+                style="z-index: 5; white-space: nowrap; font-weight:400;">GTM Empresa, la mejor aplicación de gestión de talleres mecánicos del mercado <br>te ayuda a organizar tus trabajos y clientes.
+              </div>
+
+              <!-- LAYER NR. 4 -->
+              <div class="tp-caption tp-resizeme" 
+                id="rs-2-layer-4"
+
+                data-x="['right']"
+                data-hoffset="['30']"
+                data-y="['middle']"
+                data-voffset="['90']"
+
+                data-width="none"
+                data-height="none"
+                data-whitespace="nowrap"
+                data-transform_idle="o:1;s:500"
+                data-transform_in="y:100;scaleX:1;scaleY:1;opacity:0;"
+                data-transform_out="x:left(R);s:1000;e:Power3.easeIn;s:1000;e:Power3.easeIn;"
+                data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
+                data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
+                data-start="1600" 
+                data-splitin="none" 
+                data-splitout="none" 
+                data-responsive_offset="on"
+                style="z-index: 5; white-space: nowrap; letter-spacing:1px;"><a class="btn btn-default btn-lg btn-flat mr-15" href="#">Ver mas</a><a class="btn btn-theme-colored btn-lg btn-flat text-white font-weight-600" href="#">Cotizar plan</a>
+              </div>
+            </li>
+
+            <!-- SLIDE 3 -->
+            <li data-index="rs-3" data-transition="fade" data-slotamount="default" data-easein="default" data-easeout="default" data-masterspeed="default" data-thumb="http://placehold.it/1920x1080" data-rotate="0"  data-fstransition="fade" data-saveperformance="off" data-title="Web Show" data-description="">
+              <!-- MAIN IMAGE -->
+              <img src="{% static 'appTallerGTM/images/bg3.jpg' %}"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-bgparallax="6" data-no-retina>
+              <!-- LAYERS -->
+
+              <!-- LAYER NR. 1 -->
+              <div class="tp-caption tp-resizeme text-white text-uppercase font-raleway bg-theme-colored pl-20 pr-20" 
+                id="rs-3-layer-1"
+
+                data-x="['left']"
+                data-hoffset="['30']"
+                data-y="['middle']"
+                data-voffset="['-125']"
+                data-fontsize="['24']"
+                data-lineheight="['48']"
+                data-width="none"
+                data-height="none"
+                data-whitespace="nowrap"
+                data-transform_idle="o:1;s:500"
+                data-transform_in="y:100;scaleX:1;scaleY:1;opacity:0;"
+                data-transform_out="x:left(R);s:1000;e:Power3.easeIn;s:1000;e:Power3.easeIn;"
+                data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
+                data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
+                data-start="1000" 
+                data-splitin="none" 
+                data-splitout="none" 
+                data-responsive_offset="on" 
+                style="z-index: 5; white-space: nowrap; font-weight:700; border-left: 8px solid #fff;">Registra tu taller con nosotros
+              </div>
+
+              <!-- LAYER NR. 2 -->
+              <div class="tp-caption tp-resizeme text-uppercase text-white font-raleway font-weight-700 m-0" 
+                id="rs-3-layer-2"
+
+                data-x="['left']"
+                data-hoffset="['30']"
+                data-y="['middle']"
+                data-voffset="['-50']"
+                data-fontsize="['72']"
+                data-lineheight="['82']"
+                data-width="none"
+                data-height="none"
+                data-whitespace="nowrap"
+                data-transform_idle="o:1;s:500"
+                data-transform_in="y:100;scaleX:1;scaleY:1;opacity:0;"
+                data-transform_out="x:left(R);s:1000;e:Power3.easeIn;s:1000;e:Power3.easeIn;"
+                data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
+                data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
+                data-start="1000" 
+                data-splitin="none" 
+                data-splitout="none" 
+                data-responsive_offset="on" 
+                style="z-index: 5; white-space: nowrap; font-weight:700;">GTM<span class="text-theme-colored"> Portal</span>
+              </div>
+
+              <!-- LAYER NR. 3 -->
+              <div class="tp-caption tp-resizeme text-white" 
+                id="rs-3-layer-3"
+
+                data-x="['left']"
+                data-hoffset="['30']"
+                data-y="['middle']"
+                data-voffset="['20']"
+                data-fontsize="['16','18',24']"
+                data-lineheight="['28']"
+                data-width="none"
+                data-height="none"
+                data-whitespace="nowrap"
+                data-transform_idle="o:1;s:500"
+                data-transform_in="y:100;scaleX:1;scaleY:1;opacity:0;"
+                data-transform_out="x:left(R);s:1000;e:Power3.easeIn;s:1000;e:Power3.easeIn;"
+                data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
+                data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
+                data-start="1400" 
+                data-splitin="none" 
+                data-splitout="none" 
+                data-responsive_offset="on"
+                style="z-index: 5; white-space: nowrap; font-weight:400;">Tienes un buen taller y necesitas una mejor vitrina<br>No lo pienses mas registra tu taller en nuestro Portal GTM.
+              </div>
+
+              <!-- LAYER NR. 4 -->
+              <div class="tp-caption tp-resizeme" 
+                id="rs-3-layer-4"
+
+                data-x="['left']"
+                data-hoffset="['30']"
+                data-y="['middle']"
+                data-voffset="['90']"
+
+                data-width="none"
+                data-height="none"
+                data-whitespace="nowrap"
+                data-transform_idle="o:1;s:500"
+                data-transform_in="y:100;scaleX:1;scaleY:1;opacity:0;"
+                data-transform_out="x:left(R);s:1000;e:Power3.easeIn;s:1000;e:Power3.easeIn;"
+                data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
+                data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
+                data-start="1600" 
+                data-splitin="none" 
+                data-splitout="none" 
+                data-responsive_offset="on"
+                style="z-index: 5; white-space: nowrap; letter-spacing:1px;"><a class="btn btn-theme-colored btn-lg btn-flat text-white font-weight-600 pl-30 pr-30" href="#">Registrar taller</a>
+              </div>
+            </li>
+
+          </ul>
+        </div>
+        <!-- end .rev_slider -->
+      </div>
+      <!-- end .rev_slider_wrapper -->
+      <script>
+        $(document).ready(function(e) {
+          $(".rev_slider_default").revolution({
+            sliderType:"standard",
+            sliderLayout: "auto",
+            dottedOverlay: "none",
+            delay: 5000,
+            navigation: {
+                keyboardNavigation: "off",
+                keyboard_direction: "horizontal",
+                mouseScrollNavigation: "off",
+                onHoverStop: "off",
+                touch: {
+                    touchenabled: "on",
+                    swipe_threshold: 75,
+                    swipe_min_touches: 1,
+                    swipe_direction: "horizontal",
+                    drag_block_vertical: false
+                },
+              arrows: {
+                style: "gyges",
+                enable: true,
+                hide_onmobile: false,
+                hide_onleave: true,
+                hide_delay: 200,
+                hide_delay_mobile: 1200,
+                tmp: '',
+                left: {
+                    h_align: "left",
+                    v_align: "center",
+                    h_offset: 0,
+                    v_offset: 0
+                },
+                right: {
+                    h_align: "right",
+                    v_align: "center",
+                    h_offset: 0,
+                    v_offset: 0
+                }
+              },
+              bullets: {
+                enable: true,
+                hide_onmobile: true,
+                hide_under: 800,
+                style: "hebe",
+                hide_onleave: false,
+                direction: "horizontal",
+                h_align: "center",
+                v_align: "bottom",
+                h_offset: 0,
+                v_offset: 30,
+                space: 5,
+                tmp: '<span class="tp-bullet-image"></span><span class="tp-bullet-imageoverlay"></span><span class="tp-bullet-title"></span>'
+              }
+            },
+            responsiveLevels: [1240, 1024, 778],
+            visibilityLevels: [1240, 1024, 778],
+            gridwidth: [1170, 1024, 778, 480],
+            gridheight: [680, 768, 960, 720],
+            lazyType: "none",
+            parallax: {
+                origo: "slidercenter",
+                speed: 1000,
+                levels: [5, 10, 15, 20, 25, 30, 35, 40, 45, 46, 47, 48, 49, 50, 100, 55],
+                type: "scroll"
+            },
+            shadow: 0,
+            spinner: "off",
+            stopLoop: "on",
+            stopAfterLoops: 0,
+            stopAtSlide: -1,
+            shuffle: "off",
+            autoHeight: "off",
+            fullScreenAutoWidth: "off",
+            fullScreenAlignForce: "off",
+            fullScreenOffsetContainer: "",
+            fullScreenOffset: "0",
+            hideThumbsOnMobile: "off",
+            hideSliderAtLimit: 0,
+            hideCaptionAtLimit: 0,
+            hideAllCaptionAtLilmit: 0,
+            debugMode: false,
+            fallbacks: {
+                simplifyAll: "off",
+                nextSlideOnWindowFocus: "off",
+                disableFocusListener: false,
+            }
+          });
+        });
+      </script>
+      <!-- Slider Revolution Ends -->
+    </div>
+  {% endblock slider %}
+  
+  {% block contenido %}
+
+
+  {% endblock contenido %}
+
+  
+  <!-- Footer -->
+  <footer id="footer" class="footer" data-bg-img="{% static 'appTallerGTM/images/footer-bg.png' %}" data-bg-color="#001018">
+    <div class="container pt-70 pb-40">
+      <div class="row border-bottom-black">
+        <div class="col-sm-6 col-md-3">
+          <div class="widget dark">
+            <img class="mt-10 mb-20" alt="" src="{% static 'appTallerGTM/images/GTM.png' %}">
+            <p>San José # 232, San Bernardo, Santiago de Chile.</p>
+            <ul class="list-inline mt-5">
+              <li class="m-0 pl-10 pr-10"> <i class="fa fa-phone text-theme-colored mr-5"></i> <a class="text-gray" href="#">02 2858 1102</a> </li>
+              <li class="m-0 pl-10 pr-10"> <i class="fa fa-envelope-o text-theme-colored mr-5"></i> <a class="text-gray" href="#">contacto@lajsoftware.cl</a> </li>
+              <li class="m-0 pl-10 pr-10"> <i class="fa fa-globe text-theme-colored mr-5"></i> <a class="text-gray" href="#">www.lajsoftware.cl</a> </li>
+            </ul>
+            <ul class="social-icons icon-bordered icon-circled icon-sm mt-15">
+              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="#"><i class="fa fa-twitter"></i></a></li>        
+              <li><a href="#"><i class="fa fa-instagram"></i></a></li>    
+              <li><a href="#"><i class="fa fa-linkedin"></i></a></li>           
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <div class="widget dark">
+            <h5 class="widget-title line-bottom">Noticias</h5>
+            <div class="latest-posts">
+              <article class="post media-post clearfix pb-0 mb-10">
+                <a href="https://www.lasexta.com/motor/noticias/lo-que-tendran-que-hacer-los-talleres-mecanicos-si-quieren-seguir-abiertos-en-2035_201705235a95c8680cf2052ee3c09e74.html" target="_blank" class="post-thumb"><img alt="" src="{% static 'appTallerGTM/images/noticias1.jpg' %}"></a>
+                <div class="post-right">
+                  <h5 class="post-title mt-0 mb-5"><a href="https://www.lasexta.com/motor/noticias/lo-que-tendran-que-hacer-los-talleres-mecanicos-si-quieren-seguir-abiertos-en-2035_201705235a95c8680cf2052ee3c09e74.html" target="_blank" class="post-thumb"><img alt="" src="">Requerimientos talleres futuro</a></h5>
+                  <p class="post-date mb-0 font-12">Mar 08, 2016</p>
+                </div>
+              </article>
+              <article class="post media-post clearfix pb-0 mb-10">
+                <a href="https://www.elconfidencial.com/alma-corazon-vida/2018-02-02/mecanicos-coches-low-cost-timos_1514260/" target="_blank" class="post-thumb"><img alt="" src="{% static 'appTallerGTM/images/noticias2.jpg' %}"></a>
+                <div class="post-right">
+                  <h5 class="post-title mt-0 mb-5"><a href="https://www.elconfidencial.com/alma-corazon-vida/2018-02-02/mecanicos-coches-low-cost-timos_1514260/" target="_blank"  class="post-thumb"><img alt="" src="">Los trucos sucions de los mecánicos</a></h5>
+                  <p class="post-date mb-0 font-12">Mar 08, 2015</p>
+                </div>
+              </article>              
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <div class="widget dark">
+            <h5 class="widget-title line-bottom">Acceso Rápido</h5>
+            <ul class="list angle-double-right list-border">
+              <li><a href="#">Inicio</a></li>
+              <li><a href="#">Registra tu taller</a></li>
+              <li><a href="#">Talleres</a></li>
+              <li><a href="#">Blog </a></li>
+              <li><a href="#">Clientes</a></li>              
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <div class="widget dark">
+            <h5 class="widget-title line-bottom">Contacto Rápido</h5>
+            <form id="footer_quick_contact_form" name="footer_quick_contact_form" class="quick-contact-form" action="includes/quickcontact.php" method="post">
+              <div class="form-group">
+                <input id="form_email" name="form_email" class="form-control" type="text" required="" placeholder="Ingrese Email">
+              </div>
+              <div class="form-group">
+                <textarea id="form_message" name="form_message" class="form-control" required="" placeholder="Su Mensaje" rows="3"></textarea>
+              </div>
+              <div class="form-group">
+                <input id="form_botcheck" name="form_botcheck" class="form-control" type="hidden" value="" />
+                <button type="submit" class="btn btn-default btn-transparent btn-xs btn-flat mt-0" data-loading-text="Un Segundo...">Enviar Mensaje</button>
+              </div>
+            </form>
+
+            <!-- Quick Contact Form Validation-->
+            <script type="text/javascript">
+              $("#footer_quick_contact_form").validate({
+                submitHandler: function(form) {
+                  var form_btn = $(form).find('button[type="submit"]');
+                  var form_result_div = '#form-result';
+                  $(form_result_div).remove();
+                  form_btn.before('<div id="form-result" class="alert alert-success" role="alert" style="display: none;"></div>');
+                  var form_btn_old_msg = form_btn.html();
+                  form_btn.html(form_btn.prop('disabled', true).data("loading-text"));
+                  $(form).ajaxSubmit({
+                    dataType:  'json',
+                    success: function(data) {
+                      if( data.status == 'true' ) {
+                        $(form).find('.form-control').val('');
+                      }
+                      form_btn.prop('disabled', false).html(form_btn_old_msg);
+                      $(form_result_div).html(data.message).fadeIn('slow');
+                      setTimeout(function(){ $(form_result_div).fadeOut('slow') }, 6000);
+                    }
+                  });
+                }
+              });
+            </script>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom" data-bg-color="#001111">
+      <div class="container pt-15 pb-10">
+        <div class="row">
+          <div class="col-md-12">
+            <p class="font-12 text-gray m-0 text-center">Copyright &copy;2019 <span class="text-theme-colored">LAJSoftware</span>. All Rights Reserved</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
+</div>
+<!-- end wrapper -->
+
+<!-- Footer Scripts -->
+
+
+<!-- JS | Custom script for all pages -->
+<script src="{% static 'appTallerGTM/js/custom.js' %}"></script>
+<script type="text/javascript">
+  window.onload = function(){
+    var fecha = new Date(); //Fecha actual
+    var mes = fecha.getMonth()+1; //obteniendo mes
+    var dia = fecha.getDate(); //obteniendo dia
+    var ano = fecha.getFullYear(); //obteniendo año
+    if(dia<10)
+      dia='0'+dia; //agrega cero si el menor de 10
+    if(mes<10)
+      mes='0'+mes //agrega cero si el menor de 10
+    document.getElementById('fechaActual').value=ano+"-"+mes+"-"+dia;
+  }
+  
+  </script>
+  
+
+
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+{% extends "core/base.html" %}
+
+{% block contenido %}
+    <div class="container">
+        <!-- Page Content goes here -->
+        <div class="row">
+        	<div class="col m2"></div>
+			<div class="col m8">
+				<div class="card blue-grey light-1">
+        		<div class="card-content white-text">
+          		<span class="card-title">INICIAR SESIÓN</span>		    
+					{% if form.errors %}
+					<p>Su <b>Nombre de usuario y Contreseña</b> No Coinciden. Por favor intente nuevamente.</p>
+					{% endif %}
+
+					{% if next %}
+					    {% if user.is_authenticated %}
+					    <p>Su Cuenta no tiene permisos para acceder a esta Página. To proceed,
+					    please login with an account that has access.</p>
+					    {% else %}
+					    <p>Please login to see this page.</p>
+					    {% endif %}
+					{% endif %}
+
+					<form method="post" action="{% url 'login' %}">
+					{% csrf_token %}
+
+					<div class="white-text">
+					  <td>NOMBRE USUARIO</td>
+					  <td><font color="black">{{ form.username }}</font></td>
+					</div>
+					<div class="white-text">
+					  <td>CONTRASEÑA</td>
+					  <td><font color="black">{{ form.password }}</font></td>
+					</div>
+
+					<div>
+					    <button class="btn waves-effect waves-light" type="submit" name="action">INGRESAR
+						    <i class="material-icons right">send</i>
+						</button>
+					  <input type="hidden" name="next" value="{{ next }}" />
+					</div>
+					</form>
+					<p>  </p>
+					<p><a href="{% url 'password_reset' %}"><font color="black">Olvidaste tu contraseña?</font></a></p>
+
+            </div>
+				</div >
+				</div>
+			</div>
+		    <div class="col m2"></div>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,217 @@
+
+{% extends  'core/base.html' %}
+{% block slider %}
+
+{% endblock slider %}
+{% block contenido %}
+{% load static %}
+<body class="">
+<div id="wrapper" class="clearfix">
+  <!-- Start main-content -->
+  <div class="main-content">
+    <!-- Section: inner-header -->
+    <section class="inner-header divider layer-overlay overlay-dark-8" data-bg-img="{% static 'appTallerGTM/images/automovil.jpg' %}">
+      <div class="container pt-90 pb-40">
+        <!-- Section Content -->
+        <div class="section-content">
+          <div class="row"> 
+            <div class="col-md-6">
+              <h3 class="font-28 text-white">Home/Registro</h2>
+              <ol class="breadcrumb text-left mt-10 white">
+                <li><a href="{% url 'home'%}">Inicio</a></li>
+                <li><a href="{% url 'registro' %}">Registro</a></li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>      
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 mb-40">
+            <h4 class="text-gray mt-0 pt-5"> Ingreso de clientes</h4>
+
+                      {% if form.errors %}
+                      <p>Su <b>Nombre de usuario y Contreseña</b> No Coinciden. Por favor intente nuevamente.</p>
+                      {% endif %}
+
+                      {% if next %}
+                          {% if user.is_authenticated %}
+                          <p>Su Cuenta no tiene permisos para acceder a esta Página. To proceed,
+                          please login with an account that has access.</p>
+                          {% else %}
+                          <p>Please login to see this page.</p>
+                          {% endif %}
+                      {% endif %}
+
+            
+            <hr>
+            <p>Bienvenido,  Accede desde aquí.</p>
+            <form name="login-form" class="clearfix" method="post" action="{% url 'login' %}">
+              {% csrf_token %}
+              <div class="row">
+                <div class="form-group col-md-12">
+                  <label for="form_username_email">Email</label>
+                  <input id="form_username_email" name="username" class="form-control" type="text">
+                                    
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-12">
+                  <label for="form_password">Password</label>
+                  <input id="form_password" name="password" class="form-control" type="password">
+                         
+                </div>
+              </div>
+              <div class="checkbox pull-left mt-15">
+                <label for="form_checkbox">
+                  <input id="form_checkbox" name="form_checkbox" type="checkbox">
+                  Recuerdame </label>
+              </div>
+              <div class="form-group pull-right mt-10">
+                <button type="submit" name="action" class="btn btn-dark btn-sm">Ingresar</button>
+              </div>
+              <div class="clear text-center pt-10">
+                <a class="text-theme-colored font-weight-600 font-12" href="#">¿Olvidaste tu password?</a>
+              </div>
+              <!--<div class="clear text-center pt-10">
+                <a class="btn btn-dark btn-lg btn-block no-border mt-15 mb-15" href="#" data-bg-color="#3b5998">Ingreso con facebook</a>
+                <a class="btn btn-dark btn-lg btn-block no-border" href="#" data-bg-color="#00acee">Ingreso con twitter</a>
+              </div>-->
+              
+            </form>
+          </div>
+          <div class="col-md-7 col-md-offset-1">
+            <form name="reg-form" class="register-form" method="post" action="#">
+              {% csrf_token %}
+              <div class="icon-box mb-0 p-0">
+                <a href="#" class="icon icon-bordered icon-rounded icon-sm pull-left mb-0 mr-10">
+                  <i class="pe-7s-users"></i>
+                </a>
+                <h4 class="text-gray pt-10 mt-0 mb-30">¿No tienes una cuenta? Registrate Ahora</h4>
+              </div>
+              <hr>
+              <p class="text-gray">Con tu cuenta podras enviar una solicitud de diagnóstico al taller que elijas, hacer seguimiento a tu reparación y calificar al taller y el servicio brindando.</p>
+              <div class="row">
+                <div class="form-group col-md-4">
+                    <label for="form_name">Nombre <small>*</small></label>
+                    <input id="form_name" name="nombres" class="form-control" type="text" placeholder="Ingrese Nombre" required="">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="form_name">Apellido Paterno <small>*</small></label>
+                    <input id="form_name" name="apepaterno" class="form-control" type="text" placeholder="Ap. Paterno" required="">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="form_name">Apellido Materno <small>*</small></label>
+                    <input id="form_name" name="apematerno" class="form-control" type="text" placeholder="Ap. Materno" required="">
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="form-group col-md-4">
+                      <label for="form_name">Run <small>*</small></label>
+                    <input id="form_name" name="runcliente" class="form-control input_rut" type="text" placeholder="11222333-1" required="">
+                    </div>
+                      <div class="form-group col-md-4">
+                        <label for="form_name">Fecha Nacimiento <small>*</small></label>
+                        <input name="fechanac" class="form-control required date-picker" data-date-format="yyyy-mm-dd" type="text" placeholder="Fecha nacimiento" aria-required="true">
+                      </div>
+                      <div class="form-group col-md-4">
+                          <label for="form_name">Teléfono o celular <small>*</small></label>
+                        <input id="form_name" name="telefono" class="form-control" type="text" placeholder="22854741" required="">
+                        </div>
+                    <div class="form-group col-md-8">
+                      <label>Dirección<small>*</small></label>
+                      <input name="direccion" class="form-control" type="text">
+                    </div>
+
+                        <div class="form-group col-md-4">
+                          <label for="form_name">Comuna <small>*</small></label>
+                          <div class="styled-select">
+                            <select id="car_select" name="idcomuna" class="form-control" required="">
+                               <option value="">- Seleccione Comuna -</option>
+                               {% for post in posts %}                                
+                                <option value="{{post.idcomuna}}">{{post.nomcomuna}}</option>
+                               {% endfor %}
+                            </select>
+                          </div>
+                        </div>
+
+
+                    <div class="form-group col-md-12">
+                        <label for="form_email">Email <small>*</small></label>
+                        <input id="form_email" name="email" class="form-control required email" type="email" placeholder="Ingresa Email">
+                      </div>                
+              </div>
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="form_choose_password"> Password</label>
+                  <input type="password" name="password" class="form-control" id="contra_usuario" placeholder="Password">
+                </div>
+                <div class="form-group col-md-6">
+                  <label>Re-ingresa Password</label>
+                  <input type="password" class="form-control" id="contra_n_usuario" placeholder="Password">
+                </div>
+              </div>
+              <div class="form-group">
+                <button class="btn btn-dark btn-lg btn-block mt-15" type="submit">Registrarse Ahora</button>
+              </div>
+            </form>
+                        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- end main-content -->
+<script type="text/javascript">
+
+$('.datepicker').datepicker({
+    format: 'yyyy-mm-dd',
+    startDate: '-3d'
+});
+  
+</script>
+
+<script type="text/javascript">
+  jQuery(document).ready(function($){
+    $('.input_rut').rut();
+  });
+</script>
+
+<script type="text/javascript">
+  
+$(document).ready(function () {
+    $('#mensaje_error').hide();  
+});
+
+var cambioDePass = function() {
+    var cont = $('#contra_usuario').val();
+    var cont2 = $('#contra_n_usuario').val();
+    if (cont == cont2) {
+        $('#mensaje_error').hide();
+        $('#mensaje_error').attr("class", "control-label col-md-12 text-success");
+        $('#mensaje_error').show();
+        $('#mensaje_error').html("Las constraseñas si coinciden");
+    } else {
+         $('#mensaje_error').html("Las constraseñas no coinciden");
+        $('#mensaje_error').show();
+    }
+}
+
+$("#contra_usuario").on('keyup', cambioDePass);
+$("#contra_n_usuario").on('keyup', cambioDePass);
+
+</script>
+  
+{% endblock contenido %}

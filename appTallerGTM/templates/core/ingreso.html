@@ -1,0 +1,97 @@
+
+{% extends  'core/base.html' %}
+{% block slider %}
+
+{% endblock slider %}
+
+{% block contenido %}
+{% load static %}
+  <!-- Start main-content -->
+  <div class="main-content">
+    <!-- Section: inner-header -->
+    <section class="inner-header divider layer-overlay overlay-dark-8" data-bg-img="{% static 'appTallerGTM/images/automovil2.jpg' %}">
+      <div class="container pt-90 pb-40">
+        <!-- Section Content -->
+        <div class="section-content">
+          <div class="row"> 
+            <div class="col-md-6">
+              <h3 class="font-28 text-white">Clientes</h2>
+              <ol class="breadcrumb text-left mt-10 white">
+                <li><a href="{% url 'home' %}">Inicio</a></li>
+                <li><a href="{% url 'ingreso' %}">Login</a></li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>      
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-md-push-3">
+            <h4 class="text-gray mt-0 pt-5"> Ingreso Clientes</h4>
+            <hr>
+
+            <p>Ingresa aquí....</p>
+
+                      {% if form.errors %}
+                      <p>Su <b>Nombre de usuario y Contreseña</b> No Coinciden. Por favor intente nuevamente.</p>
+                      {% endif %}
+
+                      {% if next %}
+                          {% if user.is_authenticated %}
+                          <p>Su Cuenta no tiene permisos para acceder a esta Página. To proceed,
+                          please login with an account that has access.</p>
+                          {% else %}
+                          <p>Please login to see this page.</p>
+                          {% endif %}
+                      {% endif %}
+
+            <form name="login-form" class="clearfix" method="post" action="{% url 'login' %}">
+              {% csrf_token %}
+              <div class="row">
+                <div class="form-group col-md-12">
+                  <label for="form_username_email">Email</label>
+                  <input id="form_username_email" name="form_username_email" class="form-control" type="text">
+                                    {{ form.username }}
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-12">
+                  <label for="form_password">Password</label>
+                  <input id="form_password" name="form_password" class="form-control" type="password">
+                                    {{ form.password }}
+                </div>
+              </div>
+              <div class="checkbox pull-left mt-15">
+                <label for="form_checkbox">
+                  <input id="form_checkbox" name="form_checkbox" type="checkbox">
+                  Recuerdame </label>
+              </div>
+              <div class="form-group pull-right mt-10">
+                <button type="submit" name="action" class="btn btn-dark btn-sm">Ingresar</button>
+              </div>
+              <div class="clear text-center pt-10">
+                <a class="text-theme-colored font-weight-600 font-12" href="#">¿Olvidaste tu password?</a>
+              </div>
+              <!--<div class="clear text-center pt-10">
+                <a class="btn btn-dark btn-lg btn-block no-border mt-15 mb-15" href="#" data-bg-color="#3b5998">Ingreso con facebook</a>
+                <a class="btn btn-dark btn-lg btn-block no-border" href="#" data-bg-color="#00acee">Ingreso con twitter</a>
+              </div>-->
+              
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+{% endblock contenido %}
+  
+
+  <!-- end main-content -->  
+  <a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
+</div>
+<!-- end wrapper -->

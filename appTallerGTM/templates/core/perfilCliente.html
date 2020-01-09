@@ -1,0 +1,84 @@
+{% extends  'core/baseClienteHome.html' %}
+
+{% block innerHeader %}
+{% endblock innerHeader %}
+{% block contenido %}
+
+<section id="contact" class="bg-silver-light">
+  <div class="container">
+    <div class="section-content">
+      <div class="row">
+        <div class="col-md-3">
+          <h2 class="font-36 text-uppercase line-height-1 mt-0">Actualizar Mis Dat<span
+              class="text-theme-colored">os</span></h2>
+          <p>Estos son tus datos registrados en el Portal, puedes ver o modificar los datos, utiliza el botón Actualizar para Confirmar los Cambios</p>
+        </div>
+        <div class="col-md-8">
+          <!-- Contact Form -->
+          <div class="col-md-12 col-md-offset-1">
+            <form name="reg-form" class="register-form" method="post" action="#">
+              {% csrf_token %}
+              <div class="row">
+                <div class="form-group col-md-5">
+                    <label for="form_name">Nombre </label>
+                    <input id="form_name" name="nombres" class="form-control" type="text" placeholder="Ingrese Nombre" value="{{ cliente.nombres }}" required="">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="form_name">Apellido Paterno </label>
+                    <input id="form_name" name="apepaterno" class="form-control" type="text" placeholder="Ap. Paterno"  value="{{ cliente.apepaterno }}" required="">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="form_name">Apellido Materno </label>
+                    <input id="form_name" name="apematerno" class="form-control" type="text" placeholder="Ap. Materno" value="{{ cliente.apepaterno }}" required="">
+                  </div>
+              </div>
+              <div class="row">
+                      <div class="form-group col-md-3">
+                        <label for="form_name">Fecha Nacimiento </label>
+                        <input name="fechanac" class="form-control required date-picker" data-date-format="yyyy-mm-dd" type="text" placeholder="Fecha nacimiento" value='{{ cliente.fechanac|date:"Y-m-d" }}' aria-required="true">
+                      </div>
+                      <div class="form-group col-md-3">
+                          <label for="form_name">Teléfono</label>
+                        <input id="form_name" name="telefono" class="form-control" type="text" placeholder="912345678" value="{{ cliente.telefono }}" maxlength="9" required="">
+                        </div>
+                    <div class="form-group col-md-6">
+                      <label>Dirección </label>
+                      <input name="direccion" class="form-control" type="text" value="{{ cliente.direccion }}" required="true">
+                    </div>
+
+                        <div class="form-group col-md-4">
+                          <label for="form_name">Comuna <small>*</small></label>
+                          <div class="styled-select">
+                            
+                            <select id="car_select" name="idcomuna" class="form-control" required="">
+                               <option value="">- Seleccione Comuna -</option>
+                               <!--
+                               <option value="{{cliente.idcomuna}}" selected>{{cliente.idcomuna}}</option> -->
+                               {% for post in posts %}
+                                          <option value="{{ post.idcomuna }}" {% if cliente.get_idcomuna == post.idcomuna %} selected {% endif %}>{{ post.nomcomuna }}</option>               
+                               {% endfor %}
+                            </select>
+                          <!--
+                            <select id="car_select" name="idcomuna" class="form-control" required="">
+                               <option value="">- Seleccione Comuna -</option>
+                               {% for post in posts %}
+                                  <option value="{{ post.idcomuna }}" {% if cliente.idcomuna == post.idcomuna %} selected {% endif %}>{{ post.nomcomuna }}</option>               
+                               {% endfor %}
+                            </select> -->
+                          </div>
+                        </div>
+
+                    <div class="form-group">
+                      <button class="btn btn-dark btn-lg btn-block mt-15" type="submit">Actualizar Información</button>
+                    </div>
+            </form>
+              </div>
+          </div>
+     </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock contenido %}
+
